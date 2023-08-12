@@ -11,17 +11,11 @@ module.exports = {
     backgroundColor: theme => ({
       ...theme('colors'),
       'turquoise': 'rgb(0, 218, 185)',
-      'cue-blue': 'rgb(0, 18, 63)',
-      'cue-red': 'rgb(180, 35, 37)',
-      'cue-black': 'rgb(31, 30, 28)',
-      'cue-grey': '#F0F0F0'
+      'transparent': 'rgba(0, 0, 0, 0)',
     }),
-    textColor: {
-      'cue-blue': 'rgb(0, 18, 63)',
-      'cue-red': 'rgb(180, 35, 37)',
-      'cue-black': 'rgb(31, 30, 28)',
-      'cue-white': '#FAFAFAFA'
-    },
+    textColor: theme => ({
+      ...theme('colors')
+    }),
     fontFamily: {
       cocogoose: ["Cocogoose"],
       calibri: ['Calibri', 'sans-serif'],
