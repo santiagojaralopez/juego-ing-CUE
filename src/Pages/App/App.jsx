@@ -1,4 +1,5 @@
 import { useRoutes, BrowserRouter } from 'react-router-dom';
+import { NextUIProvider } from "@nextui-org/react";
 
 import { Home } from '../Home';
 import { SoftMaze } from '../SoftMaze';
@@ -17,9 +18,11 @@ const AppRoutes = () => {
 
 function App() {
   return (
-    <BrowserRouter>
-      <AppRoutes />
-    </BrowserRouter>
+    <NextUIProvider>
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
+    </NextUIProvider>
   )
 }
 
