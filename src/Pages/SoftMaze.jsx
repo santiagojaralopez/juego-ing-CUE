@@ -1,131 +1,102 @@
+import { Button } from "@nextui-org/react";
+import Swal from "sweetalert2";
+
+import mazeBorders from "../utils/mazeBorders";
+import { SnowBackground } from "../Components/SnowBackground/SnowBackground";
 import { SoftMazeSquare } from "../Components/SoftMazeSquare"
 
+
+const solutionPaths = [
+  ['(9, 0)','(9, 1)','(9, 2)','(9, 3)','(9, 4)','(8, 4)','(8, 5)','(7, 5)','(6, 5)','(5, 5)','(5, 4)','(4, 4)','(4, 5)','(3, 5)','(2, 5)','(1, 5)','(0, 5)','(0, 6)','(1, 6)','(1, 7)','(1, 8)','(1, 9)','(0, 9)'],
+  ['(9, 0)','(8, 0)','(7, 0)','(7, 1)','(7, 2)','(6, 2)','(5, 2)','(5, 1)','(4, 1)','(4, 2)','(4, 3)','(3, 3)','(3, 2)','(2, 2)','(2, 1)','(1, 1)','(0, 1)','(0, 2)','(1, 2)','(1, 3)','(2, 3)','(2, 4)','(1, 4)','(1, 5)','(0, 5)','(0, 6)','(1, 6)','(1, 7)','(1, 8)','(1, 9)','(0, 9)']
+];
+
+const sortedShortestPath = solutionPaths[0].slice().sort().toString();
+const sortedLongestPath = solutionPaths[1].slice().sort().toString();
+
+const reviewToken = () => {
+  const token = 'SANTIAGO';
+  let inputToken = '';
+
+  Swal.fire({
+    title: '!Lo has conseguido! Ve al siguiente reto y consigue el código para continuar acá',
+    input: 'text',
+    showCancelButton: false,
+    confirmButtonText: 'Verificar código',
+    confirmButtonColor: 'rgb(0, 218, 185)',
+    showLoaderOnConfirm: true,
+    preConfirm: (userInput) => inputToken = userInput,
+    allowOutsideClick: false
+  }).then((result) => {
+    if (result.isConfirmed) {
+      if (inputToken !== token) {
+        Swal.fire(
+          'Código equivocado', '', 'error'
+        ).then((result) => {
+          if (result.isConfirmed) reviewToken();
+        })
+        // Link to the nex level
+      } else alert("WIIIIII")
+    }
+  })
+}
+
+const reviewSelectedPath = (selection) => {
+  const sortedSelection = selection.slice().sort().toString();
+
+  if (sortedSelection === sortedLongestPath) {
+    Swal.fire({
+      title: '!Esa es una solución!',
+      html: 'Pero no la más óptima :(<br>Sigue buscando',
+      timer: 4000,
+      timerProgressBar: true,
+    });
+  } else if (sortedSelection === sortedShortestPath) {
+    reviewToken();
+  } else {
+    Swal.fire({
+      title: '¿Esa es una solución?',
+      html: 'Yo no lo creo',
+      timer: 4000,
+      timerProgressBar: true,
+    });
+  }
+}
+
 export const SoftMaze = () => {
+  const selectedSquares = [];
+
+  const handleSquareClick = (row, col) => {
+    const clickedSquare = `(${row}, ${col})`;
+    const index = selectedSquares.indexOf(clickedSquare);
+
+    if (index === -1) selectedSquares.push(clickedSquare);
+    else selectedSquares.splice(index, 1);
+
+    console.log(selectedSquares);
+  };
+
   return (
-    <section className='flex flex-col items-center'>
-      <h1 className='m-10 text-4xl font-cocogoose font-bold'>HERE IS THE MAZE</h1>
-      <div className='w-[700px] h-[700px]'>
-        <div className='grid grid-cols-10 gap-0'>
-          <SoftMazeSquare borders='border-t-8 border-l-8 border-b-4' />
-          <SoftMazeSquare borders='border-t-8' />
-          <SoftMazeSquare borders='border-t-8 border-r-4' />
-          <SoftMazeSquare borders='border-t-8 border-l-4 border-b-4' />
-          <SoftMazeSquare borders='border-t-8 border-r-4' />
-          <SoftMazeSquare borders='border-t-8 border-l-4' />
-          <SoftMazeSquare borders='border-t-8 border-r-4' />
-          <SoftMazeSquare borders='border-t-8 border-l-4 border-b-4' />
-          <SoftMazeSquare borders='border-t-8 border-b-4' />
-          <SoftMazeSquare borders='border-t-8' />
+    <>
+      <SnowBackground className='-z-1' />
+      <section className='z-10 w-screen h-screen flex flex-row gap-20 justify-center items-center bg-[#232741]'>
+        <div className="z-10 w-2/5 flex justify-center items-center animate-wiggle animate-infinite">
+          <div className='w-[700px] h-[700px] '>
+            {mazeBorders.map((bordersRow, row) => (
+              <div key={row} className='grid grid-cols-10'>
+                {bordersRow.map((borders, col) => (
+                  <SoftMazeSquare key={col} borders={borders} coordinate={[row, col]} onSquareClick={handleSquareClick} />
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
-        <div className='grid grid-cols-10'>
-          <SoftMazeSquare borders='border-l-8 border-t-4 border-r-4' />
-          <SoftMazeSquare borders='border-l-4 border-r-4' />
-          <SoftMazeSquare borders='border-l-4 border-b-4' />
-          <SoftMazeSquare borders='border-t-4 border-r-4' />
-          <SoftMazeSquare borders='border-l-4' />
-          <SoftMazeSquare borders='border-r-4 border-b-4' />
-          <SoftMazeSquare borders='border-l-4 border-b-4' />
-          <SoftMazeSquare borders='border-t-4 border-b-4' />
-          <SoftMazeSquare borders='border-t-4' />
-          <SoftMazeSquare borders='border-r-8 border-b-4' />
+        <div className="z-10 w-1/5 h-[100px] flex flex-row justify-center items-center">
+          <Button color="primary" className="w-[200px] h-[100px]" onClick={() => reviewSelectedPath(selectedSquares)}>
+            <p className="text-white font-cocogoose font-bold text-2xl">VERIFICAR<br/>RUTA</p>
+          </Button>
         </div>
-        <div className='grid grid-cols-10'>
-          <SoftMazeSquare borders='border-l-8 border-r-4' />
-          <SoftMazeSquare borders='border-l-4 border-b-4' />
-          <SoftMazeSquare borders='border-t-4 border-r-4' />
-          <SoftMazeSquare borders='border-l-4 border-b-4' />
-          <SoftMazeSquare borders='border-b-4 border-r-4' />
-          <SoftMazeSquare borders='border-l-4 border-t-4' />
-          <SoftMazeSquare borders='border-t-4 border-r-4 border-b-4' />
-          <SoftMazeSquare borders='border-t-4 border-l-4 border-b-4' />
-          <SoftMazeSquare borders='border-r-4 border-b-4' />
-          <SoftMazeSquare borders='border-t-4 border-l-4 border-r-8' />
-        </div>
-        <div className='grid grid-cols-10'>
-          <SoftMazeSquare borders='border-l-8' />
-          <SoftMazeSquare borders='border-t-4 border-r-4 border-b-4' />
-          <SoftMazeSquare borders='border-l-4 border-b-4' />
-          <SoftMazeSquare borders='border-t-4' />
-          <SoftMazeSquare borders='border-t-4 border-r-4 border-b-4' />
-          <SoftMazeSquare borders='border-l-4 border-r-4' />
-          <SoftMazeSquare borders='border-t-4 border-l-4' />
-          <SoftMazeSquare borders='border-t-4 border-r-4' />
-          <SoftMazeSquare borders='border-t-4 border-l-4 border-b-4' />
-          <SoftMazeSquare borders='border-r-8' />
-        </div>
-        <div className='grid grid-cols-10'>
-          <SoftMazeSquare borders='border-l-8 border-r-4' />
-          <SoftMazeSquare borders='border-t-4 border-l-4' />
-          <SoftMazeSquare borders='border-t-4 border-b-4' />
-          <SoftMazeSquare borders='border-r-4 border-b-4' />
-          <SoftMazeSquare borders='border-t-4 border-l-4' />
-          <SoftMazeSquare borders='border-r-4 border-b-4' />
-          <SoftMazeSquare borders='border-l-4 border-r-4' />
-          <SoftMazeSquare borders='border-l-4' />
-          <SoftMazeSquare borders='border-t-4' />
-          <SoftMazeSquare borders='border-r-8 border-b-4' />
-        </div>
-        <div className='grid grid-cols-10'>
-          <SoftMazeSquare borders='border-l-8 border-r-4' />
-          <SoftMazeSquare borders='border-l-4 border-b-4' />
-          <SoftMazeSquare borders='border-t-4 border-r-4' />
-          <SoftMazeSquare borders='border-t-4 border-l-4 border-r-4' />
-          <SoftMazeSquare borders='border-l-4 border-b-4' />
-          <SoftMazeSquare borders='border-t-4' />
-          <SoftMazeSquare borders='border-r-4 border-b-4' />
-          <SoftMazeSquare borders='border-l-4 border-r-4' />
-          <SoftMazeSquare borders='border-l-4 border-r-4' />
-          <SoftMazeSquare borders='border-t-4 border-l-4 border-r-8' />
-        </div>
-        <div className='grid grid-cols-10'>
-          <SoftMazeSquare borders='border-l-8 border-b-4' />
-          <SoftMazeSquare borders='border-t-4 border-b-4' />
-          <SoftMazeSquare borders='' />
-          <SoftMazeSquare borders='' />
-          <SoftMazeSquare borders='border-t-4 border-b-4' />
-          <SoftMazeSquare borders='' />
-          <SoftMazeSquare borders='border-t-4 border-b-4' />
-          <SoftMazeSquare borders='border-r-4 border-b-4' />
-          <SoftMazeSquare borders='border-l-4 border-r-4' />
-          <SoftMazeSquare borders='border-l-4 border-r-8' />
-        </div>
-        <div className='grid grid-cols-10'>
-          <SoftMazeSquare borders='border-t-4 border-l-8' />
-          <SoftMazeSquare borders='border-t-4 border-b-4' />
-          <SoftMazeSquare borders='border-r-4' />
-          <SoftMazeSquare borders='border-l-4 border-r-4' />
-          <SoftMazeSquare borders='border-t-4 border-l-4 border-r-4' />
-          <SoftMazeSquare borders='border-l-4 border-r-4' />
-          <SoftMazeSquare borders='border-t-4 border-l-4' />
-          <SoftMazeSquare borders='border-t-4' />
-          <SoftMazeSquare borders='border-b-4' />
-          <SoftMazeSquare borders='border-r-8 border-b-4' />
-        </div>
-        <div className='grid grid-cols-10'>
-          <SoftMazeSquare borders='border-l-8 border-r-4' />
-          <SoftMazeSquare borders='border-t-4 border-l-4 border-b-4' />
-          <SoftMazeSquare borders='border-b-4' />
-          <SoftMazeSquare borders='border-r-4' />
-          <SoftMazeSquare borders='border-l-4' />
-          <SoftMazeSquare borders='border-b-4' />
-          <SoftMazeSquare borders='border-r-4' />
-          <SoftMazeSquare borders='border-l-4 border-r-4 border-b-4' />
-          <SoftMazeSquare borders='border-t-4 border-l-4' />
-          <SoftMazeSquare borders='border-t-4 border-r-8' />
-        </div>
-        <div className='grid grid-cols-10'>
-          <SoftMazeSquare borders='border-b-8' />
-          <SoftMazeSquare borders='border-t-4 border-b-8' />
-          <SoftMazeSquare borders='border-t-4 border-b-8' />
-          <SoftMazeSquare borders='border-b-8' />
-          <SoftMazeSquare borders='border-b-8' />
-          <SoftMazeSquare borders='border-t-4 border-r-4 border-b-8' />
-          <SoftMazeSquare borders='border-l-4 border-b-8' />
-          <SoftMazeSquare borders='border-t-4 border-b-8' />
-          <SoftMazeSquare borders='border-r-4 border-b-8' />
-          <SoftMazeSquare borders='border-r-8 border-l-4 border-b-8' />
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }
