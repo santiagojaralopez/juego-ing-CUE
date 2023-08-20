@@ -55,7 +55,7 @@ export const SoftMaze = () => {
           ).then((result) => {
             if (result.isConfirmed) reviewToken();
           })
-        } else navigate('/soft-cards');
+        } else navigate('/dev-team-intro');
       }
     })
   }
