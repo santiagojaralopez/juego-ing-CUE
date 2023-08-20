@@ -10,6 +10,7 @@ module.exports = {
   theme: {
     backgroundColor: theme => ({
       ...theme('colors'),
+      'cue-blue': 'rgb(0, 18, 63)',
       'turquoise': 'rgb(0, 218, 185)',
       'transparent': 'rgba(0, 0, 0, 0)',
     }),
