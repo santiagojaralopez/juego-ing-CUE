@@ -35,27 +35,15 @@ export const SoftMaze = () => {
   })
 
   const reviewToken = () => {
-    const token = 'SANTIAGO';
-    let inputToken = '';
-  
     Swal.fire({
-      title: '!Lo has conseguido! Ve al siguiente reto y consigue el código para continuar acá',
-      input: 'text',
+      title: '!Lo has conseguido! Ve a los siguientes retos de las otras ingenierías y después continuas al próximo nivel de Ing. de Software',
       showCancelButton: false,
-      confirmButtonText: 'Verificar código',
+      confirmButtonText: 'Siguiente Nivel',
       confirmButtonColor: 'rgb(0, 218, 185)',
-      showLoaderOnConfirm: true,
-      preConfirm: (userInput) => inputToken = userInput,
       allowOutsideClick: false
     }).then((result) => {
       if (result.isConfirmed) {
-        if (inputToken !== token) {
-          Swal.fire(
-            'Código equivocado', '', 'error'
-          ).then((result) => {
-            if (result.isConfirmed) reviewToken();
-          })
-        } else navigate('/dev-team-intro');
+        navigate('/dev-team-intro');
       }
     })
   }
@@ -88,8 +76,6 @@ export const SoftMaze = () => {
 
     if (index === -1) selectedSquares.push(clickedSquare);
     else selectedSquares.splice(index, 1);
-
-    console.log(selectedSquares);
   };
 
   return (
