@@ -5,6 +5,7 @@ import { Home } from '../Home';
 import { SoftMaze } from '../SoftMaze';
 import DevTeamIntro from '../DevTeamIntro';
 import DevTeamRoles from '../DevTeamRoles';
+import ClientRequirements from '../ClientRequirements';
 
 import './App.css';
 
@@ -15,6 +16,7 @@ const AppRoutes = () => {
     { path: '/soft-maze', element: <SoftMaze /> },
     { path: '/dev-team-intro', element: <DevTeamIntro /> },
     { path: '/team-roles-info', element: <DevTeamRoles /> },
+    { path: '/client-requirements', element: <ClientRequirements /> }
   ])
 
   return routes
