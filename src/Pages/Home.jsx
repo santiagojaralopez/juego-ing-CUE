@@ -15,7 +15,7 @@ export const Home = () => {
         </div>
       </div>
       <NavLink to='/soft-maze'>
-        <Button className="w-[250px] h-[70px] text-white font-calibri text-[30px]" color="success">Iniciar Juego</Button>
+        <Button className="w-[250px] h-[70px] text-white font-cocogoose text-[30px]" color="success">Iniciar Juego</Button>
       </NavLink>
     </div>
   )
