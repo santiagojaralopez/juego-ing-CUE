@@ -4,7 +4,7 @@ import { Button } from "@nextui-org/react"
 const ClientRequirements = () => {
   return (
     <div className='h-screen flex justify-center items-center bg-client-reqs bg-cover'>
-      <div class="w-4/5 h-4/5 p-10 flex flex-col gap-8 justify-center items-center rounded-2xl backdrop-blur-xl bg-white/70">
+      <div className="w-4/5 h-4/5 p-10 flex flex-col gap-8 justify-center items-center rounded-2xl backdrop-blur-xl bg-white/70">
         <h1 className='font-cocogoose text-4xl font-bold'>Requerimientos del Cliente</h1>
         <div className='flex flex-col gap-4'>
           <p className='font-cocogoose text-xl'>
