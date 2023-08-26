@@ -34,8 +34,8 @@ const ClientRequirements = () => {
             </li>
           </ol>  
         </div>
-        <NavLink to='/team-roles-info'>
-          <Button className="w-[250px] h-[70px] text-white font-calibri text-[30px]" color="success">Continuar</Button>
+        <NavLink to='/roles-selection'>
+          <Button className="w-[250px] h-[70px] text-white font-calibri text-[30px]" color="success">Conformar equipo</Button>
         </NavLink>
       </div>
     </div>
