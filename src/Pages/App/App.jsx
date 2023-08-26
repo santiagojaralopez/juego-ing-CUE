@@ -7,6 +7,7 @@ import DevTeamIntro from '../DevTeamIntro';
 import DevTeamRoles from '../DevTeamRoles';
 import ClientRequirements from '../ClientRequirements';
 import RolesSelection from '../RolesSelection';
+import { Outro } from '../Outro';
 
 import './App.css';
 
@@ -18,7 +19,8 @@ const AppRoutes = () => {
     { path: '/dev-team-intro', element: <DevTeamIntro /> },
     { path: '/team-roles-info', element: <DevTeamRoles /> },
     { path: '/client-requirements', element: <ClientRequirements /> },
-    { path: '/roles-selection', element: <RolesSelection />},
+    { path: '/roles-selection', element: <RolesSelection /> },
+    { path: '/outro', element: <Outro /> },
   ])
 
   return routes
