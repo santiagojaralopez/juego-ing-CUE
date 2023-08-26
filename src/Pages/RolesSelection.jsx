@@ -66,7 +66,7 @@ const RolesSelection = () => {
           }
         </div>
         <Button
-          className="w-[250px] h-[70px] text-white font-calibri text-[30px]"
+          className="w-[250px] h-[70px] text-white font-cocogoose text-[30px]"
           onClick={() => checkSelectedRoles()}
           color="primary"
         >

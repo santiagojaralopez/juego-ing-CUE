@@ -24,7 +24,7 @@ const DevTeamIntro = () => {
           </p>
         </div>
         <NavLink to='/team-roles-info'>
-          <Button className="w-[250px] h-[70px] text-white font-calibri text-[30px]" color="success">Iniciar</Button>
+          <Button className="w-[250px] h-[70px] text-white font-cocogoose text-[30px]" color="success">Iniciar</Button>
         </NavLink>
       </div>
     </div>

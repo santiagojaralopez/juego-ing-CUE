@@ -25,7 +25,7 @@ const DevTeamRoles = () => {
           }
         </div>
         <NavLink to='/client-requirements'>
-          <Button className="w-[250px] h-[70px] text-white font-calibri text-[30px]" color="success">Siguiente</Button>
+          <Button className="w-[250px] h-[70px] text-white font-cocogoose text-[30px]" color="success">Siguiente</Button>
         </NavLink>
       </div>
     </div>
