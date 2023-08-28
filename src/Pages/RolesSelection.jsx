@@ -42,11 +42,11 @@ const RolesSelection = () => {
 
   return (
     <div className='h-screen flex justify-center items-center bg-roles-selection bg-cover'>
-      <div className="w-4/5 h-4/5 p-10 flex flex-col gap-16 justify-center items-center rounded-2xl backdrop-blur-xl bg-white/70">
+      <div className="w-4/5 h-auto px-10 py-20 flex flex-col gap-16 justify-center items-center rounded-2xl backdrop-blur-xl bg-white/70">
         <h1 className='font-cocogoose text-4xl font-bold'>Selección del Equipo</h1>
         <div className="flex flex-col gap-2">
           <p className='font-cocogoose text-xl'>
-            De los 10 roles presentados, tendrás que descartar 3 de ellos. Esto teniendo en cuenta los requisitos del cliente y las funciones que cada rol lleva a cabo.
+            De los 10 roles presentados, tendrás que descartar 3 de ellos. Esto teniendo en cuenta los requisitos del cliente y las funciones que cada rol lleva a cabo. Selecciona los 3 roles que consideres descartables.
           </p>
           <p className='font-cocogoose text-xl'>
             Considera que, en este proyecto, nuestro enfoque está en desarrollar una interfaz atractiva y funcional para los usuarios, así como en garantizar un proceso de compra eficiente y seguro. Si bien todos los roles son importantes en diferentes contextos, ten en cuenta que algunas funciones pueden no ser tan cruciales para lograr estos objetivos específicos. Presta atención a los requerimientos del cliente y la naturaleza del proyecto mientras tomas tus decisiones.

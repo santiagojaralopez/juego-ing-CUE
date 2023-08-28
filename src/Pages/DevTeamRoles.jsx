@@ -7,7 +7,7 @@ import roles from "../utils/teamRoles"
 const DevTeamRoles = () => {
   return (
     <div className='h-screen flex justify-center items-center bg-dev-team-roles bg-cover'>
-      <div class="w-4/5 h-4/5 p-10 flex flex-col gap-16 justify-center items-center rounded-2xl backdrop-blur-xl bg-white/70">
+      <div class="w-4/5 h-auto px-10 py-20 flex flex-col gap-16 justify-center items-center rounded-2xl backdrop-blur-xl bg-white/70">
         <h1 className='font-cocogoose text-4xl font-bold'>Roles en el Equipo</h1>
         <div className="flex flex-col gap-2">
           <p className='font-cocogoose text-xl'>

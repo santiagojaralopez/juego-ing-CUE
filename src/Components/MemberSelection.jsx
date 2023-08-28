@@ -12,7 +12,7 @@ const MemberSelection = ({ memberName, onMemberClick }) => {
 
   return (
     <Button
-      className='h-16 font-cocogoose text-lg'
+      className='h-16 font-cocogoose text-md'
       color={`${isSelected ? 'secondary' : 'default'}`}
       onClick={handleClick}
     >
