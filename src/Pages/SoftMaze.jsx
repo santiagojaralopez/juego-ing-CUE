@@ -83,7 +83,7 @@ export const SoftMaze = () => {
       <SnowBackground className='-z-1' />
       <section className='z-10 w-screen h-screen flex flex-row gap-20 justify-center items-center bg-[#232741]'>
         <div className="z-10 w-2/5 flex justify-center items-center animate-wiggle animate-infinite">
-          <div className='w-[700px] h-[700px] '>
+          <div className='w-[600px] h-[600px] '>
             {mazeBorders.map((bordersRow, row) => (
               <div key={row} className='grid grid-cols-10'>
                 {bordersRow.map((borders, col) => (
